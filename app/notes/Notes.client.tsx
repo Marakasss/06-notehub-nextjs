@@ -1,18 +1,25 @@
+"use client";
+
 import { useState } from "react";
 import css from "./App.module.css";
-import SearchBox from "../SearchBox/SearchBox";
-import NoteList from "../NoteList/NoteList";
+import SearchBox from "@/components/SearchBox/SearchBox";
+import NoteList from "@/components/NoteList/NoteList";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
-import { fetchNotes } from "../../services/noteService";
-import Pagination from "../Pagination/Pagination";
-import NoteModal from "../NoteModal/NoteModal";
-import NoteForm from "../NoteForm/NoteForm";
+import { fetchNotes } from "@/lib/api";
+import Pagination from "@/components/Pagination/Pagination";
+import NoteModal from "@/components/NoteModal/NoteModal";
+import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebounce } from "use-debounce";
-import Loader from "../Loader/Loader";
-import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import Logo from "../Logo/Logo";
+import Loader from "@/components/Loader/Loader";
+import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+import Logo from "@/components/Logo/Logo";
+import { FetchNotesResponse } from "@/types/note";
 
-export default function App() {
+interface NotesClientProps {
+  initialNotesData: FetchNotesResponse;
+}
+
+export default function NotesClient({ initialNotesData }: NotesClientProps) {
   const [inputValue, setInputValue] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -24,6 +31,8 @@ export default function App() {
     queryKey: ["notes", debounseInputValue, currentPage],
     queryFn: () => fetchNotes(debounseInputValue, currentPage),
     placeholderData: keepPreviousData,
+    initialData:
+      !debounseInputValue && currentPage === 1 ? initialNotesData : undefined,
   });
 
   const totalPages = notes.data?.totalPages ?? 0;

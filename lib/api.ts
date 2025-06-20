@@ -1,11 +1,7 @@
 import axios from "axios";
-import type { Note, NewNoteData } from "../types/note";
+import type { Note, NewNoteData, FetchNotesResponse } from "../types/note";
 
 //TYPES
-interface FetchNotesResponse {
-  notes: Note[];
-  totalPages: number;
-}
 
 interface FetchNotesParams {
   search?: string;
