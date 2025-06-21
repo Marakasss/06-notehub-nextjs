@@ -14,7 +14,9 @@
   border-bottom: 1px #fff solid;
   border: 2px solid saddlebrown;
   border-radius: 8px;
-  box-shadow: 0.15em 0.15em saddlebrown, 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0.15em 0.15em saddlebrown,
+    0 4px 12px rgba(0, 0, 0, 0.4);
 }
 .addbutton {
   background: saddlebrown;

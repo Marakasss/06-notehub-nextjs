@@ -1,4 +1,5 @@
 import css from "./Logo.module.css";
-export default function Logo() {
+const Logo = () => {
   return <div className={css.logo}>Notehub</div>;
-}
+};
+export default Logo;

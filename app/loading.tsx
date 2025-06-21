@@ -1,11 +1,11 @@
-import css from "./Loader.module.css";
 import { CircleLoader } from "react-spinners";
+import css from "./Loader.module.css";
 
-export default function Loader() {
+const Loading = () => {
   return (
     <div className={css.loader}>
       <CircleLoader color="blue" />
-      <p className={css.dscr}>Loading, please wait...</p>
     </div>
   );
-}
+};
+export default Loading;

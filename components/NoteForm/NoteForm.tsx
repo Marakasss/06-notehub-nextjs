@@ -16,7 +16,7 @@ const initialFormValues: NewNoteData = {
   tag: "Todo",
 };
 
-export default function NoteForm({ onClose }: NoteFormProps) {
+const NoteForm = ({ onClose }: NoteFormProps) => {
   const fieldId = useId();
   const queryClient = useQueryClient();
 
@@ -127,4 +127,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       </Form>
     </Formik>
   );
-}
+};
+
+export default NoteForm;

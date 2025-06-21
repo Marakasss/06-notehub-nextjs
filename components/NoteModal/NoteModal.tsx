@@ -7,7 +7,7 @@ interface NoteModalProps {
   children: React.ReactNode;
 }
 
-export default function NoteModal({ onClose, children }: NoteModalProps) {
+const NoteModal = ({ onClose, children }: NoteModalProps) => {
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) onClose();
   };
@@ -31,4 +31,6 @@ export default function NoteModal({ onClose, children }: NoteModalProps) {
     </div>,
     document.body
   );
-}
+};
+
+export default NoteModal;

@@ -2,11 +2,11 @@
 
 .footer {
   padding: 20px;
-  background-color: #f0f0f0;
+
   text-align: center;
   font-size: 14px;
-  color: #555;
-  border-top: 1px solid #ddd;
+  color: #f3f0f0;
+  border-top: 1px solid #242424;
   margin-top: auto;
   background-color: #333;
 }
@@ -18,7 +18,7 @@
 }
 
 .footer a {
-  color: #226ec5;
+  color: #a5bcd7;
   font-weight: 600;
   text-decoration: none;
 }

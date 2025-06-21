@@ -5,7 +5,7 @@ interface SearchBoxProps {
   value: string;
 }
 
-export default function SearchBox({ value, onSearch }: SearchBoxProps) {
+const SearchBox = ({ value, onSearch }: SearchBoxProps) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onSearch(e.target.value);
   };
@@ -18,4 +18,6 @@ export default function SearchBox({ value, onSearch }: SearchBoxProps) {
       placeholder="Search notes"
     />
   );
-}
+};
+
+export default SearchBox;

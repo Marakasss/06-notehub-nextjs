@@ -10,8 +10,6 @@ import Pagination from "@/components/Pagination/Pagination";
 import NoteModal from "@/components/NoteModal/NoteModal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebounce } from "use-debounce";
-import Loader from "@/components/Loader/Loader";
-import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import Logo from "@/components/Logo/Logo";
 import { FetchNotesResponse } from "@/types/note";
 
@@ -45,10 +43,6 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
   return (
     <>
       <div className={css.app}>
-        {/* -------LOADER--------- */}
-
-        {notes.isLoading && <Loader />}
-
         {/* -------HEADER ELEMENTS--------- */}
 
         <header className={css.toolbar}>
@@ -68,7 +62,6 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
         {/* -------NOTELIST--------- */}
 
         <NoteList notes={notes.data?.notes ?? []} />
-        {notes.isError && <ErrorMessage />}
         {totalPages > 0 && (
           <Pagination
             totalPages={totalPages}
@@ -80,10 +73,9 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
         {/* -------NOTE MODAL--------- */}
 
         {isModalOpen && (
-          <NoteModal
-            onClose={() => setIsModalOpen(false)}
-            children={<NoteForm onClose={() => setIsModalOpen(false)} />}
-          />
+          <NoteModal onClose={() => setIsModalOpen(false)}>
+            <NoteForm onClose={() => setIsModalOpen(false)} />
+          </NoteModal>
         )}
       </div>
     </>

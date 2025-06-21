@@ -7,11 +7,11 @@ interface PaginationProps {
   onPageChange: (currentPage: number) => void;
 }
 
-export default function Pagination({
+const Pagination = ({
   totalPages,
   currentPage,
   onPageChange,
-}: PaginationProps) {
+}: PaginationProps) => {
   return (
     <ReactPaginate
       pageCount={totalPages}
@@ -25,4 +25,6 @@ export default function Pagination({
       previousLabel="←"
     />
   );
-}
+};
+
+export default Pagination;

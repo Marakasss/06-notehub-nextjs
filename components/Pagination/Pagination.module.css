@@ -6,6 +6,7 @@
   list-style: none;
   padding: 0;
   user-select: none;
+  align-self: flex-end;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -18,7 +19,10 @@
   border: 2px solid rgb(0, 0, 0);
   box-shadow: 0.15em 0.15em rgb(0, 0, 0);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .pagination li:hover {
