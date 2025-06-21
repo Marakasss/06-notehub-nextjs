@@ -26,7 +26,7 @@ const NoteDetailsClient = () => {
   if (!note) return <p>Note not found</p>;
 
   const date = new Date(note.createdAt);
-  const formatetDate = date.toLocaleString("uk-UA", {
+  const formattedDate = date.toLocaleString("uk-UA", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
@@ -36,13 +36,14 @@ const NoteDetailsClient = () => {
 
   return (
     <div className={css.container}>
+      <p>{note.tag}</p>
       <div className={css.item}>
         <div className={css.header}>
           <h2>{note.title}</h2>
           <button className={css.editBtn}>Edit note</button>
         </div>
         <p className={css.content}>{note.content}</p>
-        <p className={css.date}>{formatetDate}</p>
+        <p className={css.date}>{formattedDate}</p>
       </div>
     </div>
   );

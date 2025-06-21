@@ -11,7 +11,7 @@ import NoteModal from "@/components/NoteModal/NoteModal";
 import NoteForm from "@/components/NoteForm/NoteForm";
 import { useDebounce } from "use-debounce";
 import Logo from "@/components/Logo/Logo";
-import { FetchNotesResponse } from "@/types/note";
+import type { FetchNotesResponse } from "@/lib/api";
 
 interface NotesClientProps {
   initialNotesData: FetchNotesResponse;
@@ -23,14 +23,14 @@ export default function NotesClient({ initialNotesData }: NotesClientProps) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   //FETCHING & SEARCHING NOTES
-  const [debounseInputValue] = useDebounce(inputValue, 500);
+  const [debouncedInputValue] = useDebounce(inputValue, 500);
 
   const notes = useQuery({
-    queryKey: ["notes", debounseInputValue, currentPage],
-    queryFn: () => fetchNotes(debounseInputValue, currentPage),
+    queryKey: ["notes", debouncedInputValue, currentPage],
+    queryFn: () => fetchNotes(debouncedInputValue, currentPage),
     placeholderData: keepPreviousData,
     initialData:
-      !debounseInputValue && currentPage === 1 ? initialNotesData : undefined,
+      !debouncedInputValue && currentPage === 1 ? initialNotesData : undefined,
   });
 
   const totalPages = notes.data?.totalPages ?? 0;

@@ -3,6 +3,11 @@ import type { Note, NewNoteData, FetchNotesResponse } from "../types/note";
 
 //TYPES
 
+export interface FetchNotesResponse {
+  notes: Note[];
+  totalPages: number;
+}
+
 interface FetchNotesParams {
   search?: string;
   page?: number;

@@ -8,7 +8,7 @@ import {
 } from "@tanstack/react-query";
 
 interface NoteDetailsProps {
-  params: Promise<{ id: number }>;
+  params: Promise<{ id: string }>;
 }
 
 const NoteDetails = async ({ params }: NoteDetailsProps) => {
@@ -17,7 +17,7 @@ const NoteDetails = async ({ params }: NoteDetailsProps) => {
 
   await queryClient.prefetchQuery({
     queryKey: ["note", id],
-    queryFn: () => fetchNoteById(id),
+    queryFn: () => fetchNoteById(Number(id)),
   });
 
   return (
